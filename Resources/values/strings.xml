@@ -6,4 +6,5 @@
   <string name="CrimeTitleLabel">Title</string>
   <string name="CrimeDetailsLabel">Details</string>
   <string name="CrimeSolvedLabel">Solved</string>
+  <string name="DatePickerTitle">Date of crime:</string>
 </resources>

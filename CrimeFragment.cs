@@ -17,11 +17,15 @@ namespace CriminalIntent
     public class CrimeFragment : v4.Fragment
     {
         const string C_ARG_CRIME_ID = "crime_id";
+        const string C_DIALOG_DATE = "DialogDate";
+        const int C_REQUEST_DATE = 0;
 
         Crime crime;
         EditText titleField;
         Button dateButton;
         CheckBox solvedCheckBox;
+
+        void UpdateDate() => dateButton.Text = crime.Date.ToString();
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,14 +44,33 @@ namespace CriminalIntent
             titleField.TextChanged += (sender, e) => crime.Title = e.Text.ToString();
 
             dateButton = view.FindViewById<Button>(Resource.Id.CrimeDate);
-            dateButton.Text = crime.Date.ToString();
-            dateButton.Enabled = false;
+            UpdateDate();
+            dateButton.Click += (sender, e) =>
+            {
+                var dialog = DatePickerFragment.NewInstance(crime.Date);
+                dialog.SetTargetFragment(this, C_REQUEST_DATE);
+                dialog.Show(FragmentManager, C_DIALOG_DATE);
+            };
 
             solvedCheckBox = view.FindViewById<CheckBox>(Resource.Id.CrimeSolved);
             solvedCheckBox.Checked = crime.IsSolved;
             solvedCheckBox.CheckedChange += (sender, e) => crime.IsSolved = e.IsChecked;
 
             return view;
+        }
+
+        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
+        {
+            var result = (Result)resultCode;
+            if (result != Result.Ok)
+                return;
+
+            if (requestCode == C_REQUEST_DATE)
+            {
+                var date = DateTime.FromBinary(data.GetLongExtra(DatePickerFragment.C_EXTRA_DATE, default));
+                crime.Date = date;
+                UpdateDate();
+            }
         }
 
         public static CrimeFragment NewInstance(Guid crimeId)
