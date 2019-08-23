@@ -44,7 +44,7 @@ namespace CriminalIntent
 
             public void OnClick(View view)
             {
-                using (var intent = CrimeActivity.NewIntent(view.Context, crime.Id))
+                using (var intent = CrimePagerActivity.NewIntent(view.Context, crime.Id))
                     view.Context.StartActivity(intent);
             }
         }

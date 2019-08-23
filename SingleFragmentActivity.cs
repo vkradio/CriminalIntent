@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace CriminalIntent
 {
-    public abstract class SingleFragmentActivity : AppCompatActivity
+    public abstract class SingleFragmentActivity : XamarinActivity
     {
         protected abstract v4.Fragment CreateFragment();
 
@@ -32,13 +32,6 @@ namespace CriminalIntent
                     .Add(Resource.Id.FragmentContainer, fragment)
                     .Commit();
             }
-        }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }
