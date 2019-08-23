@@ -42,7 +42,11 @@ namespace CriminalIntent
                 solvedImageView.Visibility = crime.IsSolved ? ViewStates.Visible : ViewStates.Gone;
             }
 
-            public void OnClick(View view) => Toast.MakeText(view.Context, $"{crime.Title} clicked!", ToastLength.Short).Show();
+            public void OnClick(View view)
+            {
+                using (var intent = CrimeActivity.NewIntent(view.Context, crime.Id))
+                    view.Context.StartActivity(intent);
+            }
         }
 
         class CrimeAdapter : RecyclerView.Adapter
@@ -74,8 +78,18 @@ namespace CriminalIntent
             var crimeLab = CrimeLab.Instance(Activity);
             var crimes = crimeLab.Crimes;
 
-            adapter = new CrimeAdapter(crimes);
-            crimeRecyclerView.SetAdapter(adapter);
+            if (adapter == null)
+            {
+                adapter = new CrimeAdapter(crimes);
+                crimeRecyclerView.SetAdapter(adapter);
+            }
+            else
+            {
+                adapter.NotifyDataSetChanged();
+                // Use the RecyclerView.Adapter’s notifyItemChanged(int) method to reload a single item in the list. Modifying the code to call that method is easy.
+                // The challenge [my note: as a book sub-chapter type] is discovering which position has changed and reloading the correct item.
+                // Page 216.
+            }
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -88,6 +102,12 @@ namespace CriminalIntent
             UpdateUi();
 
             return view;
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
+            UpdateUi();
         }
     }
 }
