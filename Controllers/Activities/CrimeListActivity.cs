@@ -11,9 +11,12 @@ using v4 = Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 
-namespace CriminalIntent
+using CriminalIntent.Controllers.Activities.Base;
+using CriminalIntent.Controllers.Fragments;
+
+namespace CriminalIntent.Controllers.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label="@string/app_name", Theme="@style/AppTheme", MainLauncher=true)]
     public class CrimeListActivity : SingleFragmentActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

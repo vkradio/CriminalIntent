@@ -12,7 +12,9 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace CriminalIntent
+using CriminalIntent.Model;
+
+namespace CriminalIntent.Controllers.Fragments
 {
     public class CrimeFragment : v4.Fragment
     {

@@ -15,9 +15,7 @@ using Android.Views;
 using Android.Widget;
 using ju = Java.Util;
 
-using CriminalIntent.Util;
-
-namespace CriminalIntent
+namespace CriminalIntent.Controllers.Fragments
 {
     public class DatePickerFragment : v4.DialogFragment
     {

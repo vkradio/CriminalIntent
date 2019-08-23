@@ -61,18 +61,18 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crime.cs" />
-    <Compile Include="CrimeFragment.cs" />
-    <Compile Include="CrimeLab.cs" />
-    <Compile Include="CrimeListActivity.cs" />
-    <Compile Include="CrimeListFragment.cs" />
-    <Compile Include="CrimePagerActivity.cs" />
-    <Compile Include="DatePickerFragment.cs" />
+    <Compile Include="Model\Crime.cs" />
+    <Compile Include="Controllers\Fragments\CrimeFragment.cs" />
+    <Compile Include="Model\CrimeLab.cs" />
+    <Compile Include="Controllers\Activities\CrimeListActivity.cs" />
+    <Compile Include="Controllers\Fragments\CrimeListFragment.cs" />
+    <Compile Include="Controllers\Activities\CrimePagerActivity.cs" />
+    <Compile Include="Controllers\Fragments\DatePickerFragment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleFragmentActivity.cs" />
+    <Compile Include="Controllers\Activities\Base\SingleFragmentActivity.cs" />
     <Compile Include="Util\DateTimeUtil.cs" />
-    <Compile Include="XamarinActivity.cs" />
+    <Compile Include="Controllers\Activities\Base\XamarinActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

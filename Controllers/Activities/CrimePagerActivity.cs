@@ -14,9 +14,13 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.App;
 
-namespace CriminalIntent
+using CriminalIntent.Controllers.Activities.Base;
+using CriminalIntent.Controllers.Fragments;
+using CriminalIntent.Model;
+
+namespace CriminalIntent.Controllers.Activities
 {
-    [Activity(Label = "CrimePagerActivity")]
+    [Activity(Label="CrimePagerActivity", Theme="@style/AppTheme")]
     public class CrimePagerActivity : XamarinActivity
     {
         class CrimeStatePagerAdapter : FragmentStatePagerAdapter

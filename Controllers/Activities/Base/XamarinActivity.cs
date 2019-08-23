@@ -11,7 +11,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 
-namespace CriminalIntent
+namespace CriminalIntent.Controllers.Activities.Base
 {
     public abstract class XamarinActivity : AppCompatActivity
     {

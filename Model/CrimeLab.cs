@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace CriminalIntent
+namespace CriminalIntent.Model
 {
     class CrimeLab
     {
