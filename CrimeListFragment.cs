@@ -20,6 +20,7 @@ namespace CriminalIntent
         {
             readonly TextView titleTextView;
             readonly TextView dateTextView;
+            readonly ImageView solvedImageView;
 
             Crime crime;
 
@@ -30,6 +31,7 @@ namespace CriminalIntent
 
                 titleTextView = ItemView.FindViewById<TextView>(Resource.Id.CrimeTitle);
                 dateTextView = ItemView.FindViewById<TextView>(Resource.Id.CrimeDate);
+                solvedImageView = ItemView.FindViewById<ImageView>(Resource.Id.CrimeSolved);
             }
 
             public void Bind(Crime crime)
@@ -37,6 +39,7 @@ namespace CriminalIntent
                 this.crime = crime;
                 titleTextView.Text = this.crime.Title;
                 dateTextView.Text = this.crime.Date.ToString();
+                solvedImageView.Visibility = crime.IsSolved ? ViewStates.Visible : ViewStates.Gone;
             }
 
             public void OnClick(View view) => Toast.MakeText(view.Context, $"{crime.Title} clicked!", ToastLength.Short).Show();
