@@ -17,7 +17,7 @@ namespace CriminalIntent
         public Crime()
         {
             Id = Guid.NewGuid();
-            Date = new DateTime();
+            Date = DateTime.Now;
         }
 
         public Guid Id { get; }

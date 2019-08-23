@@ -30,19 +30,19 @@ namespace CriminalIntent
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var v = inflater.Inflate(Resource.Layout.fragment_crime, container, false);
+            var view = inflater.Inflate(Resource.Layout.fragment_crime, container, false);
 
-            titleField = v.FindViewById<EditText>(Resource.Id.CrimeTitle);
+            titleField = view.FindViewById<EditText>(Resource.Id.CrimeTitle);
             titleField.TextChanged += (sender, e) => crime.Title = e.Text.ToString();
 
-            dateButton = v.FindViewById<Button>(Resource.Id.CrimeDate);
+            dateButton = view.FindViewById<Button>(Resource.Id.CrimeDate);
             dateButton.Text = crime.Date.ToString();
             dateButton.Enabled = false;
 
-            solvedCheckBox = v.FindViewById<CheckBox>(Resource.Id.CrimeSolved);
+            solvedCheckBox = view.FindViewById<CheckBox>(Resource.Id.CrimeSolved);
             solvedCheckBox.CheckedChange += (sender, e) => crime.IsSolved = e.IsChecked;
 
-            return v;
+            return view;
         }
     }
 }
